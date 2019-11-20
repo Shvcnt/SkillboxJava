@@ -29,66 +29,62 @@ public class Main
             Scanner scanner = new Scanner(System.in);
             String[] splitTextConsole = scanner.nextLine().split("\\s+");
 
-            int valueParse = Integer.parseInt(splitTextConsole[1]);
-            boolean isIndexValid = valueParse <= todoList.size();
-
-            if (splitTextConsole[0].equalsIgnoreCase(commandList)) { // Команда LIST
-                if (splitTextConsole.length == 1) {
+            if (splitTextConsole.length == 1) {
+                if (splitTextConsole[0].equalsIgnoreCase(commandList)) { // Команда LIST
                     for (int i = 0; i < todoList.size(); i++) {
-                        System.out.println(i + " - " + todoList.get(i));
-                        continue;
+                            System.out.println(i + " - " + todoList.get(i));
+                    }
+                }
+                if (splitTextConsole[0].equalsIgnoreCase(commandAdd)) { // Команда ADD
+                    System.out.println("Введите дело, которое стоит добавить");
+                    todoList.add(scanner.nextLine());
+                }
+            }
+
+            if (splitTextConsole.length == 2)
+            {
+                if (splitTextConsole[1].matches("\\d+")) {
+
+                    int valueParse = Integer.parseInt(splitTextConsole[1]);
+                    boolean isIndexValid = valueParse <= todoList.size();
+
+                    if (splitTextConsole[0].equalsIgnoreCase(commandDelete)) // Команда DELETE
+                    {
+                        if (isIndexValid) {
+                            todoList.remove(valueParse);
+                        }
+                        else {
+                            System.out.println("Команда введена неверно! В списке всего " + todoList.size()
+                                    + " значени(я)й.");
+                        }
+                    }
+                    if (splitTextConsole[0].equalsIgnoreCase(commandEdit)) // Команда EDIT
+                    {
+                        if (isIndexValid) {
+                            System.out.println("Введите новое наименование дела");
+                            todoList.set(valueParse, scanner.nextLine());
+                        } else {
+                            System.out.println("Команда введена неверно! В списке всего " + todoList.size()
+                                    + " значени(я)й.");
+                        }
+                    }
+                    if (splitTextConsole[0].equalsIgnoreCase(commandAdd)) // Комадна ADD
+                    {
+                        if (isIndexValid) {
+                            System.out.println("Введите дело, которое стоит добавить");
+                            todoList.add(valueParse, scanner.nextLine());
+                        } else {
+                            System.out.println("Новое дело будет добавлено в конец списка, т.к. в списке всего "
+                                    + todoList.size() + " значени(я)й." + "\n" + "Введите дело, которое стоит добавить");
+                            todoList.add(scanner.nextLine());
+                        }
                     }
                 }
                 else {
                     printWrongCommand();
                 }
             }
-
-            if (splitTextConsole[0].equalsIgnoreCase(commandDelete)) // Команда DELETE
-            {
-                if (splitTextConsole.length == 2) {
-                    if (isIndexValid) {
-                        todoList.remove(valueParse);
-                    }
-                    else {
-                        System.out.println("Команда введена неверно! В списке всего " + todoList.size() + " значени(я)й.");
-                    }
-                }
-                else {
-                    printWrongCommand();
-                }
-            }
-
-            if (splitTextConsole[0].equalsIgnoreCase(commandEdit)) // Команда EDIT
-            {
-                if (splitTextConsole.length == 2) {
-                    if (isIndexValid) {
-                        todoList.set(valueParse, scanner.nextLine());
-                    }
-                    else {
-                        System.out.println("Команда введена неверно! В списке всего " + todoList.size() + " значени(я)й.");
-                    }
-                }
-                else {
-                    printWrongCommand();
-                }
-            }
-
-            if (splitTextConsole[0].equalsIgnoreCase(commandAdd)) // Комадна ADD
-            {
-                if (splitTextConsole.length == 2) {
-                    if (isIndexValid) {
-                        todoList.add(valueParse, scanner.nextLine());
-                    }
-                    else {
-                        todoList.add(scanner.nextLine());
-                    }
-                } else {
-                    printWrongCommand();
-                }
-            }
-            else
-            {
+            else {
                 printWrongCommand();
             }
         }

@@ -41,7 +41,7 @@ public class Main
                 }
             }
 
-            if (splitTextConsole.length == 2)
+            else if (splitTextConsole.length == 2)
             {
                 if (splitTextConsole[1].matches("\\d+")) {
 

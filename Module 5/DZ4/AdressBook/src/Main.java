@@ -25,39 +25,53 @@ public class Main
                 continue;
             }
 
-            if (nameOrPhone.matches("\\D+"))
+            else if (nameOrPhone.matches("\\D+"))
             {
-                if (adressBook.containsKey(nameOrPhone))
-                {
+                if (adressBook.containsKey(nameOrPhone)) {
                     System.out.println(nameOrPhone + " => " + adressBook.get(nameOrPhone));
-                }
-                else
-                {
+                } else {
                     System.out.println("Контакт не найден. Введите номер телефона в формате 79999999999 для записи нового" +
                             " контакта");
-                    String entryPhoneNumber = scanner.nextLine();
-                    adressBook.put(nameOrPhone, entryPhoneNumber);
+                    for (;;) {
+                        String entryPhoneNumber = scanner.nextLine();
+                        if (entryPhoneNumber.matches("\\d{11}")) {
+                            adressBook.put(nameOrPhone, entryPhoneNumber);
+                            printSuccess();
+                            break;
+                        } else {
+                            printError();
+                        }
+                    }
                 }
             }
 
-            if (nameOrPhone.matches("\\d{11}"))
+            else if (nameOrPhone.matches("\\d{11}"))
             {
                 if (adressBook.containsValue(nameOrPhone))
                 {
-                    System.out.println("Номер есть в книге, но как вывести ключ я не знаю)))Т_Т");
+                    printVal(nameOrPhone, adressBook);
                 }
                 else
                 {
                     System.out.println("Номер телефона не найден. Введите ФИО для записи нового" +
                             " контакта");
-                    String entryFio = scanner.nextLine();
-                    adressBook.put(entryFio, nameOrPhone);
+                    for (;;) {
+                        String entryFio = scanner.nextLine();
+                        if (entryFio.matches("\\D+")) {
+                            adressBook.put(entryFio, nameOrPhone);
+                            printSuccess();
+                            break;
+                        }
+                        else {
+                            printError();
+                        }
+                    }
                 }
             }
 
             else
             {
-                System.out.println("Ошибка ввода");
+                printError();
             }
 
         }
@@ -69,5 +83,22 @@ public class Main
         {
             System.out.println(key + " => " + map.get(key));
         }
+    }
+
+    private static void printVal(String inner, Map<String, String> phoneBook)
+    {
+        for (var entry : phoneBook.entrySet()) {
+            if (entry.getValue().equals(inner)) {
+                System.out.println(inner + " => " + entry.getKey());
+            }
+        }
+    }
+    public static void printError()
+    {
+        System.out.println("Ошибка ввода");
+    }
+    public static void printSuccess()
+    {
+        System.out.println("Контакт успешно добавлен!");
     }
 }

@@ -8,10 +8,10 @@ public class Main
     public static void main(String[] args)
     {
         TreeMap<String, String> adressBook = new TreeMap<>();
-        adressBook.put("Коваленко А.С.", "79956000505");
-        adressBook.put("Детинкина А.В.", "79956000506");
-        adressBook.put("Юсов А.С.", "79956000507");
-        adressBook.put("Коваленко К.С.", "79956000508");
+        adressBook.put("79956009786", "Коваленко А.С.");
+        adressBook.put("79956884563", "Детинкина А.В.");
+        adressBook.put("79956784534", "Юсов А.С.");
+        adressBook.put("79567884536", "Коваленко К.С.");
 
         Scanner scanner = new Scanner(System.in);
 
@@ -25,17 +25,17 @@ public class Main
                 continue;
             }
 
-            else if (nameOrPhone.matches("\\D+"))
+            else if (nameOrPhone.matches("\\d{11}"))
             {
                 if (adressBook.containsKey(nameOrPhone)) {
                     System.out.println(nameOrPhone + " => " + adressBook.get(nameOrPhone));
                 } else {
-                    System.out.println("Контакт не найден. Введите номер телефона в формате 79999999999 для записи нового" +
+                    System.out.println("Номер телефона не найден. Введите ФИО для записи нового" +
                             " контакта");
                     for (;;) {
-                        String entryPhoneNumber = scanner.nextLine();
-                        if (entryPhoneNumber.matches("\\d{11}")) {
-                            adressBook.put(nameOrPhone, entryPhoneNumber);
+                        String entryFio = scanner.nextLine();
+                        if (entryFio.matches("\\D+")) {
+                            adressBook.put(nameOrPhone, entryFio);
                             printSuccess();
                             break;
                         } else {
@@ -45,7 +45,7 @@ public class Main
                 }
             }
 
-            else if (nameOrPhone.matches("\\d{11}"))
+            else if (nameOrPhone.matches("\\D+"))
             {
                 if (adressBook.containsValue(nameOrPhone))
                 {
@@ -53,15 +53,15 @@ public class Main
                 }
                 else
                 {
-                    System.out.println("Номер телефона не найден. Введите ФИО для записи нового" +
+                    System.out.println("Контакт не найден. Введите номер телефона в формате 79999999999 для записи нового" +
                             " контакта");
                     for (;;) {
-                        String entryFio = scanner.nextLine();
-                        if (entryFio.matches("\\D+")) {
-                            adressBook.put(entryFio, nameOrPhone);
+                        String entryPhoneNumber = scanner.nextLine();
+                        if (entryPhoneNumber.matches("\\d{11}")) {
+                            adressBook.put(entryPhoneNumber, nameOrPhone);
                             printSuccess();
                             break;
-                        }
+                }
                         else {
                             printError();
                         }

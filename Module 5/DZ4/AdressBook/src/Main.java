@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Main
 {
@@ -79,9 +76,13 @@ public class Main
 
     public static void printMap (Map<String, String> map)
     {
-        for (String key : map.keySet())
-        {
-            System.out.println(key + " => " + map.get(key));
+        TreeSet<String> set = new TreeSet<>();
+
+        for (String key : map.keySet()) {
+            set.add(map.get(key) + " => " + key);
+        }
+        for (String printSet : set) {
+            System.out.println(printSet);
         }
     }
 

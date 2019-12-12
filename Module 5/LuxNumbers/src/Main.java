@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.*;
 
 public class Main
@@ -5,6 +7,9 @@ public class Main
     public static void main(String[] args)
     {
         ArrayList<String> list = new ArrayList<>();
+
+        NumberFormat numberFormat = new DecimalFormat("00");
+
 
         // A000АА01
         // А, В, Е, К, М, Н, О, Р, С, Т, У, Х
@@ -15,8 +20,8 @@ public class Main
         for (int k = 0; k < 12; k++) {
             for (int j = 0; j < 10; j++) {
                 for (int i = 01; i <= 197; i++) {
-                    String luxNumber = letterNumber[k] + numberNumber[j] + letterNumber[k] + letterNumber[k] + i;
-                    list.add(luxNumber);
+                    String luxNumber = letterNumber[k] + numberNumber[j] + letterNumber[k] + letterNumber[k];
+                    list.add(luxNumber + numberFormat.format(i));
 //                    System.out.print(luxNumber);
 //                    System.out.format("%02d%n", i);
                 }

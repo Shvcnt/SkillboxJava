@@ -15,14 +15,7 @@ public class DepositAccount extends Account
 
     public void addMoney(double money)
     {
-        if (money > 0) {
-            moneyCount += money;
-            System.out.println("Пополнение счета на: " + money + " рублей." +
-                    " Остаток денежных средств: " + moneyCount + " рублей.");
-        }
-        else {
-            System.out.println("Вы не можете пополнить счет на отрицательную сумму");
-        }
+        super.addMoney(money);
     }
 
     public void withgrawMoney(double money)
@@ -32,18 +25,7 @@ public class DepositAccount extends Account
         boolean compareDate = dt > MONTH_MILLIS;
 
         if (compareDate) {
-            if (money > 0) {
-                if (moneyCount > money) {
-                    moneyCount -= money;
-                    System.out.println("Снятие денежных средств со счета: " + money + " рублей." +
-                            " Остаток денежных средств: " + moneyCount + " рублей.");
-                } else {
-                    System.out.println("Недостаточно средств");
-                }
-            }
-            else {
-                System.out.println("Вы не можете снять отрицательную сумму");
-            }
+            super.withdrawMoney(money);
         }
         else {
             System.out.println("Вы не можете снять денежные средства, т.к. после последнего пополнения" +

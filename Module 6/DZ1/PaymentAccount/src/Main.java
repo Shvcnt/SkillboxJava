@@ -28,5 +28,7 @@ public class Main
         deposit.withgrawMoney(1000);
         deposit.withgrawMoney(300000);
         deposit.withgrawMoney(-1000);
+        deposit.addMoney(10000);
+        deposit.withgrawMoney(1000);
     }
 }

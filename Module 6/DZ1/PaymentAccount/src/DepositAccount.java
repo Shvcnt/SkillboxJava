@@ -13,11 +13,15 @@ public class DepositAccount extends Account
         super(moneyCount);
     }
 
+    @Override
     public void addMoney(double money)
     {
+        Date dateAdd = calendar.getTime();
+        date1 = dateAdd;
         super.addMoney(money);
     }
 
+    @Override
     public void withgrawMoney(double money)
     {
         Date date2 = calendar.getTime();

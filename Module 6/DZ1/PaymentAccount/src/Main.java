@@ -23,12 +23,12 @@ public class Main
         DepositAccount deposit = new DepositAccount(15000);
         deposit.addMoney(10000);
         deposit.addMoney(-10000);
-        deposit.withgrawMoney(1000);
+        deposit.withdrawMoney(1000);
         deposit.addMonth();
-        deposit.withgrawMoney(1000);
-        deposit.withgrawMoney(300000);
-        deposit.withgrawMoney(-1000);
+        deposit.withdrawMoney(1000);
+        deposit.withdrawMoney(300000);
+        deposit.withdrawMoney(-1000);
         deposit.addMoney(10000);
-        deposit.withgrawMoney(1000);
+        deposit.withdrawMoney(1000);
     }
 }

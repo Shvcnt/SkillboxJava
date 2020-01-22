@@ -22,7 +22,7 @@ public class DepositAccount extends Account
     }
 
     @Override
-    public void withgrawMoney(double money)
+    public void withdrawMoney(double money)
     {
         Date date2 = calendar.getTime();
         long dt = date2.getTime() - date1.getTime();

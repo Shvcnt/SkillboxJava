@@ -8,7 +8,7 @@ public class DepositAccount extends Account
 
     private static final long MONTH_MILLIS = 2592000000L;
 
-    public DepositAccount(int moneyCount)
+    DepositAccount(int moneyCount)
     {
         super(moneyCount);
     }
@@ -37,7 +37,7 @@ public class DepositAccount extends Account
         }
     }
 
-    public void addMonth()
+    void addMonth()
     {
         System.out.println("Прошел 1 месяц......");
         calendar.add(Calendar.MONTH, +1);

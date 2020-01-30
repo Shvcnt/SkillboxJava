@@ -1,6 +1,6 @@
 public class CardAccount extends Account
 {
-    public CardAccount(double moneyCount)
+    CardAccount(double moneyCount)
     {
         super(moneyCount);
     }

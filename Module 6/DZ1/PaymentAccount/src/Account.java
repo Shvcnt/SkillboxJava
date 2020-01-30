@@ -1,6 +1,6 @@
 public class Account
 {
-    public double moneyCount;
+    private double moneyCount;
 
     public Account(double moneyCount)
     {

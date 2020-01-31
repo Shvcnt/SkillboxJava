@@ -1,16 +1,28 @@
 public abstract class Client
 {
-    private int account;
+    private double account;
 
-    public Client ()
+    Client(double money)
     {
-        this.account = 0;
+        if (money > 0) {
+            this.account = money;
+        }
+        else {
+            System.out.println("Невозможно открыть р/с с отрицательной суммой на балансе. Р/с открыт с нулевым остатком.");
+        }
     }
 
-    public abstract void addMoney ();
-    public abstract void withdrawMoney ();
-
-    public int getAccount() {
+    public double getAccount()
+    {
         return account;
     }
+
+    public void setAccount(double money)
+    {
+        this.account += money;
+    }
+
+    public abstract void addMoney(double money);
+    public abstract void withdrawMoney(double money);
+    public abstract double getMoneyCount();
 }

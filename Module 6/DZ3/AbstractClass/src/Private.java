@@ -1,15 +1,26 @@
-public class Private extends Client
+public class Private extends Individual
 {
-
-    @Override
-    public void addMoney()
+    Private(double money)
     {
-
+        super(money);
     }
 
     @Override
-    public void withdrawMoney()
+    public void addMoney(double money)
     {
-
+        if (money < 1000)
+        {
+            super.addMoney(money -= money * 0.01);
+        }
+        else
+        {
+            super.addMoney(money -= money * 0.005);
+        }
     }
+
+//    @Override
+//    public void withdrawMoney(double money)
+//    {
+//        super.withdrawMoney(money);
+//    }
 }

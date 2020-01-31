@@ -3,8 +3,8 @@ import java.util.Date;
 
 public class DepositAccount extends Account
 {
-    Calendar calendar = Calendar.getInstance();
-    Date date1 = calendar.getTime();
+    private Calendar calendar = Calendar.getInstance();
+    private Date date1 = calendar.getTime();
 
     private static final long MONTH_MILLIS = 2592000000L;
 
